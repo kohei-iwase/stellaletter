@@ -1,8 +1,8 @@
 <%= form_for(@character) do |f| %>
  
-    <% if @post_image.errors.any? %>
-        <%= @post_image.errors.count %>件のエラーが発生しました
-        <% @post_image.errors.full_messages.each do |message| %>
+    <% if @character.errors.any? %>
+        <%= @character.errors.count %>件のエラーが発生しました
+        <% @character.errors.full_messages.each do |message| %>
             <%= message %>
         <% end %>
     <% end %>

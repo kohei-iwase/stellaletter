@@ -1,4 +1,4 @@
-<%= form_for(@post_image) do |f| %>
+<%= form_for(@character) do |f| %>
  
     <% if @post_image.errors.any? %>
         <%= @post_image.errors.count %>件のエラーが発生しました
@@ -8,7 +8,7 @@
     <% end %>
  
     <%= f.attachment_field :image %>
-    <%= f.text_field :shop_name %>
-    <%= f.text_area :caption %>
+    <%= f.text_field :name %>
+    <%= f.text_area :introduction %>
     <%= f.submit %>
 <% end %>

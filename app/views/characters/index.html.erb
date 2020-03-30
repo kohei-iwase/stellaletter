@@ -1,0 +1,14 @@
+<!-- 画像からリンク -->
+<%= link_to character_path(character.id) do %>
+    <%= attachment_image_tag post_image, :image %>
+<% end %>
+
+<!-- コメント数 -->
+<ul class="inline-meta">
+  <li>By
+    <%= character.user.name %>
+  </li>
+  <li>
+    <%= link_to "#{character.comments.count} コメント", character_path(character.id) %>
+  </li>
+</ul>

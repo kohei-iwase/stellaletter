@@ -24,10 +24,15 @@ class CharactersController < ApplicationController
 	end
 
 	def index
-		@characters = Character.all
+		#キャラクターを逆順で表示　ページャーにkaminari使用
+		@characters = Character.page(params[:page]).reverse_order
 	end
 
 	def destroy
+	    @character = Character.find(params[:id])
+    	@character.destroy
+    	redirect_to characters_path
+end
 	end
 
 end

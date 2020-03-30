@@ -30,7 +30,10 @@
 <% end %>
           <li>
             <i class="fa fa-comment"></i>
-            <a href="#comments">4</a>
+            <a href="#comments"><%= @character.comments.count %></a>
+          </li>
+          <li>
+            <%= link_to "削除", post_image_path(@post_image), method: :delete %>
           </li>
         </ul>
         <div class="character-content-inner mt-20">

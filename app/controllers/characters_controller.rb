@@ -5,9 +5,9 @@ class CharactersController < ApplicationController
 
 	def create
 		@character = Character.new(character_params)
-		@character.user_id = current_user.user_id
+		@character.user_id = current_user.id
 		@character.save
-		redirect_to characters_path
+		redirect_to character_path_(@character)
 	end
 
 	def show
@@ -18,9 +18,13 @@ class CharactersController < ApplicationController
 	end
 
 	def edit
+		@character = Character.find(params[:id])
 	end
 
 	def update
+		@character = Character.find(params[:id])
+		if @character.update
+		redirect_to character_path_(@character)
 	end
 
 	def index

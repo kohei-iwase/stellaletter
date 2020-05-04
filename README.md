@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+stellaletterは創作キャラクターのマッチング用のwebアプリケーションです。
+まだみぬ相手とボトルメッセージをやり取りしながらキャラクターの理想のペアを作っていきます。
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+・Ruby on Rails
+・DatabeseCration

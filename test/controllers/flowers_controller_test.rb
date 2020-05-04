@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FavoriteTest < ActiveSupport::TestCase
+class FlowersControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

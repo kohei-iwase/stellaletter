@@ -3,6 +3,7 @@ class CreateCharacterSkills < ActiveRecord::Migration[5.2]
     create_table :character_skills do |t|
     	t.string :name
     	t.string :text
+    	t.string  :image_id
 
       t.timestamps
     end

@@ -1,6 +1,8 @@
 class Comment < ApplicationRecord
+	attachment :image # 画像用
+	
+	belongs_to :user
+	belongs_to :character
 
-belongs_to :user # ユーザーにネスト
-attachment :image # 画像用
-
+	validates :user_id, presence: true
 end

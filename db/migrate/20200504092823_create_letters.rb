@@ -3,7 +3,8 @@ class CreateLetters < ActiveRecord::Migration[5.2]
     create_table :letters do |t|
       t.integer :from_id, 	null: false
       t.integer :to_id,		null: false
-      t.string	:title,		null: false
+      t.string	:title,		null: false, default: ""
+      t.string	:image_id
       t.text	:message
 
       t.timestamps

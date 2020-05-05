@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_084655) do
   create_table "character_skills", force: :cascade do |t|
     t.string "name"
     t.string "text"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_character_skills_on_name"
@@ -34,12 +35,14 @@ ActiveRecord::Schema.define(version: 2020_05_05_084655) do
     t.integer "character_skill_id"
     t.integer "flower_id"
     t.integer "color_id"
+    t.integer "system_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["character_id"], name: "index_character_statuses_on_character_id"
     t.index ["character_skill_id"], name: "index_character_statuses_on_character_skill_id"
     t.index ["color_id"], name: "index_character_statuses_on_color_id"
     t.index ["flower_id"], name: "index_character_statuses_on_flower_id"
+    t.index ["system_id"], name: "index_character_statuses_on_system_id"
   end
 
   create_table "characters", force: :cascade do |t|
@@ -71,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_084655) do
     t.text "comment"
     t.integer "user_id", null: false
     t.integer "character_id", null: false
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["character_id"], name: "index_comments_on_character_id"
@@ -88,7 +92,8 @@ ActiveRecord::Schema.define(version: 2020_05_05_084655) do
   create_table "letters", force: :cascade do |t|
     t.integer "from_id", null: false
     t.integer "to_id", null: false
-    t.string "title", null: false
+    t.string "title", default: "", null: false
+    t.string "image_id"
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -98,7 +103,8 @@ ActiveRecord::Schema.define(version: 2020_05_05_084655) do
   end
 
   create_table "like_and_dislikes", force: :cascade do |t|
-    t.string "name"
+    t.string "name", default: ""
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_like_and_dislikes_on_name"
@@ -143,6 +149,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_084655) do
 
   create_table "session_styles", force: :cascade do |t|
     t.string "name", default: "", null: false
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_session_styles_on_name"

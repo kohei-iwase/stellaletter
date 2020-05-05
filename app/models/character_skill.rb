@@ -1,3 +1,5 @@
 class CharacterSkill < ApplicationRecord
-	belongs_to :character,		null: false
+	belongs_to :character
+	validates :character_id, presence: true
+	validates :name, presence: true
 end

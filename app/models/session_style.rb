@@ -1,0 +1,2 @@
+class SessionStyle < ApplicationRecord
+end

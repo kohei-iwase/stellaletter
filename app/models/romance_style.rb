@@ -1,0 +1,2 @@
+class RomanceStyle < ApplicationRecord
+end

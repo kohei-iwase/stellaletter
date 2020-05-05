@@ -1,0 +1,2 @@
+class LikeAndDislike < ApplicationRecord
+end

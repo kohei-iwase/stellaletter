@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_084655) do
+ActiveRecord::Schema.define(version: 2020_05_05_103125) do
 
   create_table "bouquets", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -110,17 +110,9 @@ ActiveRecord::Schema.define(version: 2020_05_05_084655) do
     t.index ["name"], name: "index_like_and_dislikes_on_name"
   end
 
-  create_table "partners", force: :cascade do |t|
-    t.integer "character_id"
-    t.integer "partner_id"
-    t.string "partner_status"
-    t.boolean "is_active"
+  create_table "partnerships", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["character_id", "partner_id"], name: "index_partners_on_character_id_and_partner_id", unique: true
-    t.index ["character_id"], name: "index_partners_on_character_id"
-    t.index ["is_active"], name: "index_partners_on_is_active"
-    t.index ["partner_id"], name: "index_partners_on_partner_id"
   end
 
   create_table "playing_styles", force: :cascade do |t|

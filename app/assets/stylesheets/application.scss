@@ -1,0 +1,147 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+
+/* application */
+
+body{
+	width:1000px;
+}
+
+img{
+	border-radius:8px;
+	height:auto;
+}
+
+img-circle{
+		border:3px;
+		border-color: black;
+}
+
+.buttons{
+	text-align:center;
+}
+/* user */
+
+.user-box h3 {
+  /*線の種類（二重線）太さ 色*/
+  border-bottom: double 5px #fee904;
+  text-align:center;
+}
+.user-box h5 {
+  position: relative;
+  background: #ffd98a;
+  padding: 2px 5px 2px 40px;
+  margin-top: 30px;
+  font-size: 16px;
+  color: #474747;
+  border-radius: 0 10px 10px 0;
+}
+
+.user-box h5:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f135";
+  display: inline-block;
+  line-height: 40px;
+  position: absolute;
+  padding: 0em;
+  color: white;
+  background: #ffa337;
+  font-weight: normal;
+  width: 40px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  left: -0.6em;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  border: solid 2px white; 
+  border-radius: 50%;
+}
+
+.user-box h6 {
+  padding-top: 20px;
+  text-align:center;
+}
+
+.user-box{
+	padding:15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	min-height:700px;
+    background-color: rgba(0,0,0,0.3);
+	position:relative; z-index: 0;
+	border: groove 3px gray;
+	border-radius:8px;
+}
+
+/* characters */
+.character-index h2 {
+  position: relative;
+  padding: 0.4em;
+  background: -webkit-repeating-linear-gradient(-45deg, #fff5df, #fff5df 4px,#ffe4b1 3px, #ffe4b1 8px);
+  background: repeating-linear-gradient(-45deg, #fff5df, #fff5df 4px,#ffe4b1 3px, #ffe4b1 8px);
+  text-align: center;
+  border-radius: 7px;
+}
+
+.character-index h2:after {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 30px;
+  border: 15px solid transparent;
+  border-top: 15px solid #ffebbe;
+  width: 0;
+  height: 0;
+}
+
+.character-profile h3 {
+  padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
+  color: #494949;/*文字色*/
+  background: #f4f4f4;/*背景色*/
+  border-left: solid 5px #7db4e6;/*左線*/
+  border-bottom: solid 3px #d7d7d7;/*下線*/
+}
+
+.character-box{
+	margin-top: 15px;
+	margin-bottom: 15px;
+	height:520px;
+    background-color: rgba(0,0,0,1);
+	position:relative; z-index: 0;
+	border-radius:8px;
+}
+
+.character-image{
+  height:300px;
+
+}
+
+.character-profile{
+  padding-left: 10px;
+  padding-top:5px;
+  padding-bottom: 5px;
+  height:220px;
+  color:white;
+  background-color: rgba(0,0,0,0.8);
+  position:relative; z-index: 1;
+  border-radius:8px;
+}

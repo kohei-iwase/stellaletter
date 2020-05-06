@@ -1,0 +1,26 @@
+<div class="content-box">
+    <div class ="row">
+        <div class="title">
+            <h1>パートナー</h1>
+        </div>
+        <div class="character-index">
+                <div class="col-xs-3">
+                    あなた
+                    <%= render 'users/user_box', user: current_user%>
+                </div>
+                <div class="col-xs-3">
+                    うちのこ
+                    <%= render 'characters/character_box', character: @character%>
+                </div>
+                <div class="col-xs-3">
+                    よそのこ
+                    <%= render 'characters/character_box', character: @character%>
+                </div>
+                <div class="col-xs-3">
+                    あいて
+                    <%= render 'users/user_box', user: @user%>
+                </div>
+
+        </div>
+    </div>
+</div>

@@ -3,6 +3,8 @@ class CreateColors < ActiveRecord::Migration[5.2]
     create_table :colors do |t|
       t.string	:name, 			null: false
       t.string	:text
+      t.string  :image_id
+
 
       t.timestamps
     end

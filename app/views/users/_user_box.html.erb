@@ -1,0 +1,42 @@
+<div class="user-box">
+    <div class="user-image">
+        <%= attachment_image_tag user, :image,width:'100%',fallback: "users/no_image.png", class: "img-circle"%>
+    </div>
+    <div class="user-profile">
+        名前
+        <h3><%=link_to user.name, user_path(user) %></h3>
+        SNS
+        <h3><%#= user.sns%></h3>
+        <div class="user-system">
+        <h5>システム</h5>
+        <% if @systems.nil? %>
+            <h6>システムは未設定です</h6>
+        <% else %>
+
+        <% end %>
+        </div>
+        <div class="user-likes">
+        <h5>性癖</h5>
+        <% if @likes.nil? %>
+            <h6>性癖は未設定です</h6>
+        <% else %>
+
+        <% end %>
+
+        </div>
+        <div class="user-introduction">
+        <h5>自己紹介</h5>
+        <% if @introduction.nil? %>
+            <h6>自己紹介は未設定です</h6>
+        <% else %>
+
+        <% end %>
+        </div>
+        <% if user == current_user %>
+            <div class="buttons">
+                <%= link_to "プロフィール編集", edit_user_path(user), class: "btn btn-success" %>
+            </div>
+        <% end %>
+
+    </div>
+</div>

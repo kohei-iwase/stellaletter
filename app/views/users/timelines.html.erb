@@ -1,0 +1,21 @@
+<div class="content-box">
+    <div class ="row">
+        <div class="title">
+            <h1>タイムライン</h1>
+        </div>
+        <div class="user-index">
+            <div class="col-xs-3">
+                <%= render 'users/user_box', user: current_user%>
+            </div>
+        </div>
+        <% if @timelines.any? %>
+        <div class="character-index">
+			<% @timelines.each do |character| %>
+        		<div class="col-xs-3">
+                    <%= render 'characters/character_box', character: character%>
+	        	</div>
+        	<% end %>
+        </div>
+        <% end %>
+    </div>
+</div>

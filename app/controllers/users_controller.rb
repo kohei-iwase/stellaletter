@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_action :set_user,only: [:show,:update, :destroy, :edit,:partners] #ユーザー情報を最初にセット
+	before_action :set_user,only: [:show,:update, :destroy, :edit] #ユーザー情報を最初にセット
 #	before_action :baria_user,only: [:update, :destroy, :edit] #本人以外のアクセスを防ぐ
 
 	def show
@@ -9,23 +9,40 @@ class UsersController < ApplicationController
 	def edit
 	end
 
-	def update
-    	redirect_to user_path(current_user) if @user != current_user
-    	  if @user.update(user_params)
-      		flash[:success] = 'プロフィールの更新に成功しました！'
-      		redirect_to user_path(@user)
-    	  else
-      		flash[:danger] = 'プロフィールの更新に失敗しました'
-      		redirect_to edit_user_path(@user)
-    	  end
-	end
+  def update
+    redirect_to user_path(current_user) if @user != current_user
+    if @user.update(user_params)
+    	flash[:success] = 'プロフィールの更新に成功しました！'
+      	redirect_to user_path(@user)
+    else
+      	flash[:danger] = 'プロフィールの更新に失敗しました'
+      	redirect_to edit_user_path(@user)
+    end
+  end
 
-	def index
-		@users = User.all
-	end
+  def index
+	@users = User.all
+  end
 
-	def partners
-	end
+
+  def following
+    @title = 'Following'
+    @user = User.find(params[:id])
+    @users = @user.following.page(params[:page]).per(10)
+    render 'show_follow'
+  end
+
+  def followers
+    @title = 'Followers'
+    @user = User.find(params[:id])
+    @users = @user.followers.page(params[:page]).per(10)
+    render 'show_follow'
+  end
+
+  def timelines
+    @characters = current_user.characters.build
+    @timelines = current_user.timeline.order(created_at: :desc).page(params[:page]).per(10)
+  end
 
 		private
 		  def user_params

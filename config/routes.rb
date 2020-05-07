@@ -14,7 +14,8 @@ Rails.application.routes.draw do
     end
   	
     resources :letters, only: [:create,:edit,:update,:destroy,:show,:index]
-  	resource  :bouquets, only: [:create,:destroy]
+  	resources :bouquets, only: [:create,:destroy]
+    get :bouquets, on: :collection
   end
 
   #フォロイー、フォロワー作成用

@@ -10,5 +10,6 @@ class CreateBouquets < ActiveRecord::Migration[5.2]
 
     add_index :bouquets, :user_id
     add_index :bouquets, :charcter_id
+    add_index :bouquets, [:user_id, :character_id], unique: true
   end
 end

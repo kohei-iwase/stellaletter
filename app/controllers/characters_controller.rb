@@ -31,7 +31,7 @@ class CharactersController < ApplicationController
 	def index
 		#キャラクターを逆順で表示　ページャーにkaminari使用
 		# @characters = Character.page(params[:page]).reverse_order
-		@characters = Character.all
+		@characters = Character.all.includes(:user)
 	end
 
 	def destroy
@@ -39,6 +39,10 @@ class CharactersController < ApplicationController
     	if @character.destroy
     		redirect_to characters_path
     	end
+	end
+
+	def bouquets
+		@characters = current_user.bouquets_characters.includes(:user)
 	end
 
 	def partners

@@ -1,4 +1,6 @@
-  	<h2><%=link_to character.nickname,character_path(character) %></h2>
+  	<div class="comment">
+  		<h2><%=link_to character.nickname,character_path(character) %></h2>
+  	</div>
         <div class="character-box">
 	        <div class="character-image">
 	           	<%= attachment_image_tag character, :image,width:'100%',fallback: "characters/no_image.png"%>
@@ -25,6 +27,10 @@
 		        </table>
 		          	コメント
 	            	<br><%= character.pr %>
+	            	<br>
+	            	<time datetime="<%= character.created_at %>">
+                        <%= time_ago_in_words(character.created_at) %>ago
+                    </time>
 	        </div>
 	     </div>
 

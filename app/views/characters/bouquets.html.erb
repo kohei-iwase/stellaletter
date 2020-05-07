@@ -1,0 +1,14 @@
+<div class="content-box">
+    <div class ="row">
+        <div class="title">
+            <h1>ブーケ一覧</h1>
+        </div>
+        <div class="character-index">
+        	<% @characters.each do |character| %>
+        		<div class="col-xs-3">
+                    <%= render 'characters/character_box', character: character%>
+	        	</div>
+        	<% end %>
+        </div>
+    </div>
+</div>

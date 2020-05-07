@@ -1,11 +1,77 @@
 <div class="content-box">
     <div class ="row">
         <div class="title">
-            <h1>キャラクター詳細</h1>
+            <h1>
+                <%if @user == current_user %>
+                    うちのこ詳細
+                <% else %>
+                    よそのこ詳細
+                <% end %>
+            </h1>
         </div>
-        <div class="character-index">
+        <div class="character-show">
+                <div class="col-xs-4">
+                    <div class="character-profile">
+                        ●概要
+                        <h3><%=link_to @character.name,character_path(@character) %></h3>
+                        <table>
+                            <tr>
+                                <td>愛称/二つ名</td>
+                                <td><%= @character.nickname %></td>
+                            </tr>
+                            <tr>
+                                <td>性別</td>
+                                <td><%= @character.gender %></td>
+                            </tr>
+                            <tr>
+                                <td>年齢</td>
+                                <td><%= @character.age %></td>
+                            </tr>
+                            <tr>
+                                <td>人種</td>
+                                <td><%= @character.race %></td>
+                            </tr>
+                        </table>
+                            コメント
+                            <br><%= @character.pr %>
+                    </div><div class="character-profile">
+                        ●詳細
+                        <h3><%=link_to @character.name,character_path(@character) %></h3>
+                        <table>
+                            <tr>
+                                <td>愛称/二つ名</td>
+                                <td><%= @character.nickname %></td>
+                            </tr>
+                            <tr>
+                                <td>性別</td>
+                                <td><%= @character.gender %></td>
+                            </tr>
+                            <tr>
+                                <td>年齢</td>
+                                <td><%= @character.age %></td>
+                            </tr>
+                            <tr>
+                                <td>人種</td>
+                                <td><%= @character.race %></td>
+                            </tr>
+                        </table>
+                            コメント
+                            <br><%= @character.pr %>
+                    </div>
+                </div>
+                <div class="col-xs-5">
+                    <div class="buttons">
+                        <%= render 'characters/bouquets_button', character: @character%>
+                    </div>
+                    <div class="character-image">
+                        <%= attachment_image_tag @character, :image,fallback: "characters/no_image.png"%>
+                    </div>
+                </div>
                 <div class="col-xs-3">
-                    <%= render 'characters/character_box', character: @character%>
+                    <div class="comment">
+                        <h2>私が育てました</h2>
+                    </div>
+                        <%= render 'users/user_box', user: @user%>
                 </div>
         </div>
     </div>

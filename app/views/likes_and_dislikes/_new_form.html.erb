@@ -1,0 +1,7 @@
+<%= form_with model:@like,url: likes_and_dislikes_path(@like), local: true do |f| %>
+	<div class="system_form">
+		<%= f.label :性癖名 %>
+		<%= f.text_field :name, class: "system_form" %>
+		<%= f.submit '追加', class: "btn btn-primary" %>
+	</div>
+<% end %>

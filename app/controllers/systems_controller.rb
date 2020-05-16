@@ -1,6 +1,5 @@
 class SystemsController < ApplicationController
 	def create
-		@system = System.new(system_params)
 		# @n = params[:system][:n]
 		# if 		@n.to_i == 1 then
 		# 	 	@system.name = params[:system][:name]
@@ -14,9 +13,9 @@ class SystemsController < ApplicationController
 		# elsif
 		# 	@system.supple = "基本ルールブック"
 		# end
-
+		@system = System.new(system_params)
 		if @system.save #入力されたデータをdbに保存する。
-  			redirect_to systems_path, success: "新しいルルブ/サプリを登録しました！"#保存された場合の移動先を指定。
+  			redirect_to systems_path, success: "新しいルルブ/サプリを登録しました！"
 	    else
 	      @systems = System.all
 	      flash[:danger] = 'ルルブ/サプリの登録に失敗しました。名前の入力欄は空白になっていませんか？'

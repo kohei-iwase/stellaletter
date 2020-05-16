@@ -1,0 +1,10 @@
+<% if system.followed_by?(current_user) %>
+	<%= form_for(current_user.user_status.find_by(system_id: system.id), remote: true,method: :delete) do |f| %>
+		<%= f.submit "マイシステムから外す", class: "btn btn-danger" %>
+	<% end %>
+<% else %>
+	<%= form_for(current_user.user_status.build, remote: true) do |f| %>
+		<%= hidden_field_tag :system_id, system.id %>
+		<%= f.submit "マイシステムに加える", class: "btn btn-primary" %>
+	<% end %>
+<% end %>

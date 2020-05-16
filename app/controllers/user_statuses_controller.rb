@@ -1,39 +1,36 @@
 class UserStatusesController < ApplicationController
 before_action :set_user_status, only: [:show, :update, :destroy, :edit]
 before_action :set_user
- # 	def create
- # 		@status = UserStatus.new(user_status_params)
- #        @status.user_id = current_user.id
- #        @current_status = UserStatus.find_by(system_id: @status.system_id,user_id: @status.user_id)
- #        if @current_status.nil?
- #            if @status.save
- #                redirect_to systems_path, notice: "性癖が追加されました。"
- #            else
- #                @status = UserStatus.all
- #                render 'index'
- #            end
- #        else
- #            @status.update(user_status_params)
- #            redirect_to systems_path
- #        end
- #    end
 
- #    def destroy
- #  		@status.destroy
- #  		redirect_to sytems_path, success: "アイテムを削除しました。"
-	# end
 	def create
-        @system = System.find(params[:sysytem_id])
-        @status = current_user.user_statuses.new(system_id: system.id)
-        @status.save
-        redirect_to systems_path
-    end
-    def destroy
-        @system = System.find(params[:system_id])
-        @status = current_user.statuses.find_by(system_id: system.id)
-        @status.destroy
-        redirect_to systems_path
-    end
+		@system = System.find(params[:system_id])
+		@user.follow_system(@system)
+		redirect_to systems_path
+
+		# respond_to do |format|
+		# 	format.html	{redirect_back(fallback_location: @system)}
+		# 	format.js
+		# end
+	end
+
+	def destroy
+		@system = UserStatus.find(params[:id]).system
+		@user.unfollow_system(@system)
+		redirect_to systems_path
+		# respond_to do |format|
+		# 	format.html	{redirect_back(fallback_location: @system)}
+		# 	format.js
+		# end
+	end
+
+	def create_likes
+		@like = LikeAndDislike.find(params[:like_id])
+		@user.follow_like(@like)
+		redirect_to likes_and_dislikes_path
+	end
+
+
+
 
 	def index
 		@status = @user.statuses.all

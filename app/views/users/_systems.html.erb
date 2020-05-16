@@ -1,0 +1,22 @@
+<h5>マイシステム</h5>
+    <% if systems.nil? %>
+        <h6>マイシステムは未設定です</h6>
+    <% else %>
+        <% systems.each do |system| %>
+            <%= link_to system_path(system) do %>
+            <div class="status-card-wrapper">
+                <div class= 'status-card'>
+                    <div class="status-image">
+                        <%= attachment_image_tag system, :image,:width =>'95%' ,fallback: "users/no_image.png"%>
+                    </div>
+                    <div class="status-title">
+                        <%= system.title %>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+        <% end %>
+     <% end %>
+         <div class="button-form">
+            <%= link_to "システム一覧へ", systems_path, class: "btn btn-default"%>
+        </div>

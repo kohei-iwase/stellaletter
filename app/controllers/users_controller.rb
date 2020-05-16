@@ -5,8 +5,9 @@ class UsersController < ApplicationController
 
 	def show
     @characters = @user.characters
-    @status = @user.user_status.all
-    @systems = @status.system
+    @systems = @user.systems.order(created_at: :desc).page(params[:page]).per(4)
+    # @likes = @user.likes.order(created_at: :desc).page(params[:page]).per(4)
+
 	end
 
 	def edit

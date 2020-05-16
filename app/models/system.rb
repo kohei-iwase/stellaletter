@@ -6,4 +6,9 @@ class System < ApplicationRecord
 	has_many :books,				dependent: :destroy
 
 	validates :title, presence: true
+
+    def followed_by?(user)
+        user_statuses.where(user_id: user.id).exists?
+    end
+
 end

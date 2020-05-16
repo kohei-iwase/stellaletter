@@ -26,6 +26,20 @@ class User < ApplicationRecord
 
   has_many :systems, through: :user_status, source: :system
 
+  #　性癖表示
+  has_many :likes_status,       class_name: 'UserStatus',
+                                foreign_key: 'like_id',
+                                dependent: :destroy
+  has_many :likes, through: :likes_status, source: :like
+
+
+  # 地雷表示
+  has_many :dislikes_status, class_name: 'UserStatus',
+                                  foreign_key: 'dislike_id',
+                                  dependent: :destroy
+  has_many :dislikes, through: :dislikes_status, source: :dislike
+
+
   # ユーザーをフォローする
   def follow(other_user)
     active_relationships.create(followed_id: other_user.id)
@@ -46,17 +60,40 @@ class User < ApplicationRecord
   end
 
   def follow_system(system)
-    user_statuses.create(system_id: system.id)
+    user_status.create(system_id: system.id)
   end
 
   def unfollow_system(system)
-    user_statuses.find_by(system_id: system.id).destroy
+    user_status.find_by(system_id: system.id).destroy
   end
 
   def following_system?(system)
     systems.include?(system)
   end
 
+  def follow_like(like)
+    likes_status.create(like_id: like.id)
+  end
+
+  def unfollow_like(like)
+    likes_status.find_by(like_id: like.id).destroy
+  end
+
+  def following_like?(like)
+    likes.include?(like)
+  end
+
+  def follow_dislike(dislike)
+    likes_status.create(dislike_id: dislike.id)
+  end
+
+  def unfollow_dislike(dislike)
+    dislikes_status.find_by(dislike_id: dislike.id).destroy
+  end
+
+  def following_dislike?(dislike)
+    dislike.include?(dislike)
+  end
 
   # タイムラインの構築
   def timeline

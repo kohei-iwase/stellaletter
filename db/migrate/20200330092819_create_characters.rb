@@ -9,8 +9,14 @@ class CreateCharacters < ActiveRecord::Migration[5.2]
     	t.string 	:gender
     	t.string	:age
     	t.string	:race
+        t.string    :birthday
+        t.string    :personality
+        t.string    :weakness
+        t.string    :strength
+        t.string    :from
+        t.integer   :bload_type
     	t.text		:profile
-    	t.text		:pr
+    	t.text		:comment
 
       t.timestamps
     end

@@ -10,13 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_05_103125) do
+ActiveRecord::Schema.define(version: 2020_05_15_094724) do
+
+  create_table "books", force: :cascade do |t|
+    t.string "image_id"
+    t.integer "system_id"
+    t.string "title", default: "", null: false
+    t.text "text"
+    t.boolean "official"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["official"], name: "index_books_on_official"
+    t.index ["system_id"], name: "index_books_on_system_id"
+    t.index ["title"], name: "index_books_on_title"
+  end
 
   create_table "bouquets", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "character_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id", "character_id"], name: "index_bouquets_on_user_id_and_character_id", unique: true
     t.index ["user_id"], name: "index_bouquets_on_user_id"
     t.index [nil], name: "index_bouquets_on_charcter_id"
   end
@@ -53,8 +67,14 @@ ActiveRecord::Schema.define(version: 2020_05_05_103125) do
     t.string "gender"
     t.string "age"
     t.string "race"
+    t.string "birthday"
+    t.string "personality"
+    t.string "weakness"
+    t.string "strength"
+    t.string "from"
+    t.integer "bload_type"
     t.text "profile"
-    t.text "pr"
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_characters_on_name"
@@ -65,6 +85,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_103125) do
   create_table "colors", force: :cascade do |t|
     t.string "name", null: false
     t.string "text"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_colors_on_name"
@@ -149,11 +170,13 @@ ActiveRecord::Schema.define(version: 2020_05_05_103125) do
 
   create_table "systems", force: :cascade do |t|
     t.string "image_id"
-    t.string "name", null: false
+    t.string "title", default: "", null: false
     t.text "text"
+    t.boolean "official"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_systems_on_name"
+    t.index ["official"], name: "index_systems_on_official"
+    t.index ["title"], name: "index_systems_on_title"
   end
 
   create_table "user_skills", force: :cascade do |t|

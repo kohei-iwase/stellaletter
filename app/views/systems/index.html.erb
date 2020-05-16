@@ -1,0 +1,85 @@
+<div class="content-box">
+    <div class ="row">
+        <div class="title">
+            <h1>システム一覧画面</h1>
+        </div>
+        <div class="main-content">
+		   <h3>システム一覧</h3>
+		    			  <table class='table'>
+				<thead>
+					<tr bgcolor="#EEEEEE">
+						<th></th>
+						<th>サプリ</th>
+						<th>システム</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @systems.each do |system| %>
+					<tr>
+						<th>
+							<div class="book-image">
+								<%= attachment_image_tag system, :image,:size =>'100x120' ,fallback: "users/no_image.png"%>
+							</div>
+						</th>
+						<th><%= system.title %></th>
+						<th><%= system.text %></th>
+						<th>
+							<% if character.bouqueted_by?(current_user) %>
+    						<%= link_to "マイシステムから外す"character_bouquet_path(character),class: "btn btn-danger", method: :delete %>
+							<% else %>
+    						<%= link_to "マイシステムに加える" ,character_bouquets_path(character), class: "btn btn-primary", method: :post %>
+							<% end %>
+<!-- 							<%= form_with model: [ system, @status ],local: true, url:{controller: 'user_statuses', action: 'create'} do |f| %>
+							<%= f.hidden_field :system_id, value: system.id  %>
+							<%= f.submit "カートに入れる", class: "btn btn-primary" %>
+							<% end %>
+ -->						</th>
+					</tr>
+					<% end %>
+				</tbody>
+			  </table>
+			</div>
+			<hr>
+	<h3>システム追加</h3>
+	<div class="col-xs-8">
+		<div class="new-form">
+			<%= render partial: 'systems/new_form', flash: flash %>
+
+
+	    	<%#= form_with model:@system,url: systems_path(@system), local: true do |f| %>
+   			<!-- システムの選択 -->
+<!--  			     <div class="system-fields">
+	      		システム名
+		      		<%#= f.fields_for :name do |n| %>
+		      			<div class="system-field">
+				        	<%#= n.radio_button :name, 1,checked: true, style: "display: inline-block" %>システム一覧から選択
+			        		<%#= n.collection_select(:system, @systems, :id, :name,{prompt:"選択してください"})%>
+			        	</div>
+			       		<div class="system-field">
+				        	<%#= n.radio_button :name, 2, style: "display: inline-block" %>システム名を入力（一覧にない場合
+		    		        <%#= n.text_field :name %>
+		    		    </div>
+		    		<%# end %>
+		    	</div>
+	    	    <div class="supple-fields">
+	    	   	サプリ名
+		    	   	<%#= f.fields_for :supple do |s| %>
+				    	<div class="supple-field">
+				    		<%#= s.radio_button :supple, "基本ルールブック",checked: true, style: "display: inline-block" %>
+				    		基本ルールブック
+				    	</div>
+				    	<div class="supple-field">
+			    	    	<%#= s.radio_button :supple, 3,style: "display: inline-block" %>サプリ名を入力
+    	    				<%#= s.text_field :supple %>
+				    	</div>
+		      		<%# end %>
+    			</div>
+    			<%#= f.submit "システム・サプリを追加する", class: "btn btn-primary" %>
+ -->    		<%# end %>
+    	</div>
+    </div>
+  <!---------- フォームここまで ------------>
+
+    </div>
+</div>

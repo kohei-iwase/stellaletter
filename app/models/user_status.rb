@@ -7,4 +7,6 @@ class UserStatus < ApplicationRecord
 	belongs_to :romance_style, optional: true
 	belongs_to :session_style, optional: true
 	belongs_to :playing_style, optional: true
+
+	validates :user_id, uniqueness: { scope: :system_id } #システムの一意性担保のため
 end

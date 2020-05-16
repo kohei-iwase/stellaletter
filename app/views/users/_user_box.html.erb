@@ -19,7 +19,10 @@
         <% if @systems.nil? %>
             <h6>システムは未設定です</h6>
         <% else %>
-
+            <% @systems.each do |system| %>
+                <span class= 'user-systems'>
+                    <%= system.title %></span>
+            <% end %>
         <% end %>
     </div>
     <div class="user-likes">
@@ -27,15 +30,19 @@
         <% if @likes.nil? %>
             <h6>性癖は未設定です</h6>
         <% else %>
-
+            <% @user.likes.each do |like| %>
+                <span class= 'user-likes'><%= likes.name %></span>
+            <% end %>
         <% end %>
     </div>
-    <div class="user-introduction">
+    <div class="user-dislikes">
         <h5>自己紹介</h5>
-        <% if @introduction.nil? %>
-            <h6>自己紹介は未設定です</h6>
+        <% if @dislikes.nil? %>
+            <h6>地雷は未設定です</h6>
         <% else %>
-
+            <% @user.dislikes.each do |dislikes| %>
+                <span class= 'user-dislikes'><%= dislikes.name %></span>
+            <% end %>
         <% end %>
     </div>
 </div>

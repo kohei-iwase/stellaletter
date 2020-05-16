@@ -3,6 +3,7 @@ class System < ApplicationRecord
 
 	has_many :user_statuses, 		dependent: :destroy
 	has_many :character_statuses, 	dependent: :destroy
+	has_many :books,				dependent: :destroy
 
-	validates :name, presence: true
+	validates :title, presence: true
 end

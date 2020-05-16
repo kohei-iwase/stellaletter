@@ -1,0 +1,23 @@
+<div class="content-box">
+    <div class ="row">
+        <div class="title">
+            <h2>性癖タグ</h2>
+        </div>
+        <div class="form-body">
+                <%= form_with model:@like_and_dislike do |f| %>
+                <div class="form-group">
+                    <label class="control-label">画像</label>
+                        <%= f.attachment_field :image, id:"attachmentImage"%>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">名前</label>
+                        <%= f.text_field :name,     class:"form-control" %>
+                </div>
+                <hr>
+                <div class="form-button">
+                    <%= f.submit "性癖を追加",    class:"btn btn-lg btn-block btn-base-1 mt-20" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

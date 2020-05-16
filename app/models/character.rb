@@ -11,6 +11,7 @@ class Character < ApplicationRecord
 
 	validates :name, presence: true #キャラクターの名前は必須とする
 
+		#誰にブーケを投げられたか
         def bouqueted_by?(user)
           bouquets.where(user_id: user.id).exists?
         end

@@ -1,0 +1,73 @@
+<div class="content-box">
+    <div class ="row">
+        <div class="title">
+            <h1>キャラクター編集</h1>
+        </div>
+            <div class="col-xs-4">
+                <h2>プロフィール</h2>
+                <%= form_with model:@character do |f| %>
+                    <div class="form-body">
+                         <table>
+                            <tr>
+                                 <th width="100">愛称/二つ名</th>
+                                 <td colspan="3">
+                                     <%= f.text_field :nickname, class: "form-control", placeholder:"" %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>名前</th>
+                                <td colspan="5">
+                                    <%= f.text_field :name,     class: "form-control", placeholder:"名前（必須）" %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>性別</th>
+                                <td width="50">
+                                    <%= f.text_field :gender,   class: "form-control", placeholder:"" %>
+                                </td>
+                                <th width="50">年齢</th>
+                                <td width="50">
+                                    <%= f.text_field :age,      class: "form-control", placeholder:"" %>
+                                </td>
+                                <th width="50">種族</th>
+                                <td>
+                                    <%= f.text_field :race,     class: "form-control", placeholder:"" %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>プロフィール</th>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <%= f.text_area :profile,   class: "form-control", placeholder:"300文字以内" ,rows:"8"%>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>コメント</th>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <%= f.text_area :pr,        class: "form-control", placeholder:"300文字以内", rows:"3" %>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td colspan="6">
+                                    <hr>
+                                    <%= f.submit "キャラクターを作成",    class: "btn btn-primary" %>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+            </div>
+            <div class="col-xs-5">
+                <div class="character-image">
+                    <%= attachment_image_tag @character, :image,fallback: "characters/no_image.png"%>
+                    <p><%= f.attachment_field :image, id:"attachmentImage"%></p>
+                </div>
+            </div>
+                <% end %>
+            <div class="col-xs-3">
+                <%= render 'users/user_box', user: @character.user%>
+            </div>
+    </div>
+</div>

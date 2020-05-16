@@ -11,9 +11,7 @@
         <% if @timelines.any? %>
         <div class="character-index">
 			<% @timelines.each do |character| %>
-        		<div class="col-xs-3">
-                    <%= render 'characters/character_box', character: character%>
-	        	</div>
+                <%= render 'characters/cards', character: character%>
         	<% end %>
         </div>
         <% end %>

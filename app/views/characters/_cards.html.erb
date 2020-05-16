@@ -1,0 +1,54 @@
+<div class="card-wrapper">
+    <div class="card" data-toggle-class="flipped">
+        <div class="card-front">
+            <div class="layer">
+                <div class="corner"></div>
+                <div class="corner"></div>
+                <div class="corner"></div>
+                <div class="corner"></div>
+                <div class="card-name">
+                    <h1><%= character.name %></h1>
+                </div>
+                <div class="card-image">
+                    <%= attachment_image_tag character, :image,width:'100%',fallback: "characters/no_image.png"%>
+                </div>
+            </div>
+        </div>
+        <div class="card-back">
+            <div class="layer">
+                <div class="card-image">
+                    <%= attachment_image_tag character, :image,width:'100%',fallback: "characters/no_image.png"%>
+                    <div class="card-profile">
+                     <h3><%=link_to character.name,character_path(character) %></h3>
+                        <table>
+                            <tr>
+                                <td>愛称/二つ名</td>
+                                <td><%= character.nickname %></td>
+                            </tr>
+                            <tr>
+                                <td>性別</td>
+                                <td><%= character.gender %></td>
+                            </tr>
+                            <tr>
+                                <td>年齢</td>
+                                <td><%= character.age %></td>
+                            </tr>
+                            <tr>
+                                <td>人種</td>
+                                <td><%= character.race %></td>
+                            </tr>
+                        </table>
+                                                コメント
+                                                <br><%= character.comment %>
+                                                <br>
+                                                <time datetime="<%= character.created_at %>">
+                                                    <%= time_ago_in_words(character.created_at) %>ago
+                                                </time>
+                                        </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

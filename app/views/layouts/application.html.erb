@@ -15,7 +15,7 @@
 
   <body>
     <div class="header-wrapper">
-      <div class="header container">
+      <div class="header">
         <%= render 'layouts/header' %>
       </div>
     </div>
@@ -23,6 +23,11 @@
       <div class="body container">
         <%= render 'layouts/flash' %>
         <%= yield %>
+      </div>
+    </div>
+    <div class="footer-wrapper">
+      <div class="footer">
+        <%= render 'layouts/footer' %>
       </div>
     </div>
   </body>

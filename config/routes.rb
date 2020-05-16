@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       member do
         get :following, :followers
         get :timelines
+        get :status
 	    end
     end
 
@@ -12,7 +13,6 @@ Rails.application.routes.draw do
     member do
       get :partners
     end
-  	
     resources :letters, only: [:create,:edit,:update,:destroy,:show,:index]
   	resources :bouquets, only: [:create,:destroy]
     get :bouquets, on: :collection
@@ -20,10 +20,14 @@ Rails.application.routes.draw do
 
   #フォロイー、フォロワー作成用
   resources :relationships, only: [:create,:destroy]
+  #パートナー作成用
   resources :pertnerships,  only: [:create,:destroy]
   #通知用のルーティング
   resources :notifications, only: :index
 
+  resources :user_statuses, only: [:create,:destroy]
+
+  resources :systems, only: [:create,:edit,:update,:destroy,:show,:index]
 
   root 'homes#top'
 

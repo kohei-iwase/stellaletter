@@ -1,0 +1,2 @@
+module LikesAndDislikesHelper
+end

@@ -1,0 +1,7 @@
+<%= form_with model:@system,url: systems_path(@system), local: true do |f| %>
+	<div class="system_form">
+		<%= f.label :システム名 %>
+		<%= f.text_field :title, class: "system_form" %>
+		<%= f.submit '追加', class: "btn btn-primary" %>
+	</div>
+<% end %>

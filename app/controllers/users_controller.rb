@@ -4,6 +4,9 @@ class UsersController < ApplicationController
 #	before_action :baria_user,only: [:update, :destroy, :edit] #本人以外のアクセスを防ぐ
 
 	def show
+    @characters = @user.characters
+    @status = @user.user_status.all
+    @systems = @status.system
 	end
 
 	def edit
@@ -21,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   def index
-	@users = User.all
+	  @users = User.all.includes(:characters)
   end
 
 
@@ -47,16 +50,16 @@ class UsersController < ApplicationController
 		private
 		  def user_params
     		params.require(:user).permit(:name, :image, :password, :introduction, :email)
-  		  end
+  		end
 
-  		  def set_user
-  		  	@user = User.find(params[:id])
-  		  end
+  		def set_user
+  		  @user = User.find(params[:id])
+  		end
 
-  		  def baria_user
-  		  	if @user != current_user
-				redirect_to user_path(current_user)
-			end 
+  		def baria_user
+  		  if @user != current_user
+				  redirect_to user_path(current_user)
+			   end
 		  end
 
 

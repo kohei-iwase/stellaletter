@@ -18,17 +18,45 @@
  @import "bootstrap";
 
 
-/* application */
-
-body{
-	width:1000px;
+/* header */
+nav{
+  background-image: image-url("stars/3.jpg");
+  background-position: 50% 64%;
+  background-size: cover;
+  height:300px;
+}
+header{
+  width:100%;
 }
 
+/* body */
+a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+
+body{
+  margin:auto !important;
+  background-image: image-url("stars/5.jpg");
+  background-color: rgba(255,255,255,0.7);
+  border-radius:8px;
+}
+
+/* images */
 img{
 	border-radius:8px;
 	height:auto;
 	max-height: 800px;
 	display: inline-block;
+  text-align: center;
+}
+.book-image{
+  max-height: 100px;
 }
 
 img-circle{
@@ -36,6 +64,9 @@ img-circle{
 		border-color: black;
 }
 
+.title{
+  padding-left:30px;
+}
 .buttons{
 	text-align:center;
 }
@@ -60,6 +91,26 @@ img-circle{
   height: 0;
 }
 
+.content-box{
+  background-image: image-url("papers/4.jpg");
+  background-size: cover;
+  margin-top:30px;
+  margin-bottom:30px;
+  padding:20px;
+  box-shadow: 15px 15px 20px 20px #555,
+  3px 15px 20px rgba(255,255,255,0.8) inset;
+}
+
+/* top */
+.top-image{
+  background-image: image-url("stars/6.JPG");
+  background-position: center;
+  background-size: cover;
+  height:800px;
+  margin-top:30px;
+  margin-bottom:30px;
+  box-shadow: 3px 15px 20px rgba(255,255,255,0.8) inset;
+}
 
 /* user */
 
@@ -110,7 +161,7 @@ img-circle{
 	margin-top: 15px;
 	margin-bottom: 15px;
 	min-height:700px;
-    background-color: rgba(0,0,0,0.3);
+  background-color: rgba(0,0,0,0.3);
 	position:relative; z-index: 0;
 	border: groove 3px gray;
 	border-radius:8px;
@@ -146,7 +197,8 @@ img-circle{
 	margin-top: 15px;
 	margin-bottom: 15px;
 	height:520px;
-    background-color: rgba(0,0,0,1);
+  box-shadow: 0 4px 15px rgba(0,0,0,.2);
+  background-color: rgba(0,0,0,1);
 	position:relative; z-index: 0;
 	border-radius:8px;
 }
@@ -165,4 +217,214 @@ img-circle{
   background-color: rgba(0,0,0,0.8);
   position:relative; z-index: 1;
   border-radius:8px;
+}
+
+/*------------------*
+ * character-card *
+ *------------------*/
+$card-ratio: 85 / 55 !default;
+
+// Settings.
+$card-width: 200px !default;
+$card-height: $card-width * $card-ratio !default;
+
+$corner-size: 12px !default;
+$icon-size: 80px !default;
+
+// Colours.
+$colour-bg: #333 !default;
+$colour-card-bg: #302f34 !default;
+$colour-gold: #d4cd96 !default;
+
+.card {
+    color: $colour-gold;
+    font-family: 'Fira Sans', sans-serif;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform-origin: 100% 50%;
+    transform-style: preserve-3d;
+    width: 100%;
+    border-radius: 8px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    transition: transform .6s cubic-bezier(.49, .23, .58, .49);
+    &.flipped {
+        transform: translateX(-100%) rotateY(-180deg);
+    }
+}
+.card-front,
+.card-back {
+    backface-visibility: hidden;
+    background: repeating-linear-gradient(135deg,
+        rgba(darken($colour-card-bg, 50), .3),
+        transparent 1px,
+        rgba(darken($colour-card-bg, 50), .3) 2px
+    );
+    background-size: 3px 3px;
+    background-color: $colour-card-bg;
+    border-radius: 1px;
+    box-shadow: 0px -6px 8px 0px rgba(#000, .1),
+        0px 6px 8px 0px rgba(#000, .1),
+        6px 0px 8px 0px rgba(#000, .1),
+        -6px 0px 8px 0px rgba(#000, .1);
+    cursor: pointer;
+    height: 100%;
+    left: 0;
+    padding: 5%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+
+    .layer {
+        background: repeating-linear-gradient(135deg,
+            rgba(darken($colour-gold, 50), .3),
+            transparent 1px,
+            rgba(darken($colour-gold, 50), .3) 2px
+        );
+        background-size: 3px 3px;
+        background-color: $colour-gold;
+        color: $colour-card-bg;
+        height: 100%;
+        position: relative;
+        width: 100%;
+
+        &:after {
+            background: linear-gradient(135deg, rgba(#000, .2), transparent);
+            content: '';
+            display: block;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        h2, h3, h4 {
+            font-weight: 400;
+            margin: 2px 0;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        h3 {
+          padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
+          color: #494949;/*文字色*/
+          background: #f4f4f4;/*背景色*/
+          border-left: solid 5px #7db4e6;/*左線*/
+          border-bottom: solid 3px #d7d7d7;/*下線*/
+        }
+
+        h4 {
+            font-size: 16px;
+            font-style: italic;
+        }
+    }
+}
+
+.card-front {
+    .layer {
+        backface-visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+        
+        h1 {
+            font-size: 32px;
+            font-weight: 400;
+            letter-spacing: -2px;
+            margin: 0 auto;
+            padding: 6px 18px 4px;
+            text-align: center;
+        }
+
+        .corner {
+            backface-visibility: hidden;
+            border-right: 2px solid $colour-gold;
+            border-top: 2px solid $colour-gold;
+            height: $corner-size;
+            position: absolute;
+            width: $corner-size;
+            
+            &:nth-of-type(1) {
+                right: 0;
+                top: 0;
+            }
+            
+            &:nth-of-type(2) {
+                left: 0;
+                top: 0;
+                transform: rotateZ(-90deg);
+            }
+            
+            &:nth-of-type(3) {
+                bottom: 0;
+                left: 0;
+                transform: rotateZ(180deg);
+            }
+            
+            &:nth-of-type(4) {
+                bottom: 0;
+                right: 0;
+                transform: rotateZ(90deg);
+            }
+        }
+    }
+}
+.card-name{
+  margin-top: 0px;
+  padding-top:5px;
+  height: 50px;
+  vertical-align: top;
+  z-index:2;
+}
+.card-image{
+  max-height:100%;
+  overflow: scroll; 
+}
+.card-profile{
+  position:absolute;
+  top:0px;
+  padding-left:10px;
+  height:100%;
+  width: 100%;
+  color:white;
+  background-color: rgba(0,0,0,0.6);
+
+}
+.card-wrapper {
+  display: inline-flex;
+    height: $card-height;
+    max-width: $card-width;
+    perspective: 600px;
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+    transition: transform 1s;
+}
+
+
+/* footer */
+.footer-text{
+  color:gray;
+  height:235px;
+  line-height: 235px;
+  margin-top:20px;
+  padding-top:70px;
+  text-align:center;
+  background-image: image-url("stars/3.jpg");
+  background-position: 50% 90%;
+  background-size: cover;
+
 }

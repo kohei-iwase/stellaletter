@@ -23,7 +23,7 @@
                     			</div>
 		               	</div>
 		               	<div class="system-follow-form">
-							<%= render "likes_and_dislikes/follow" ,like: like %>
+							<%= render "likes/follow" ,like: like %>
 						</div>
 					</div>
 				<% end %>
@@ -31,7 +31,7 @@
 			<hr>
 	<h3>システム追加</h3>
 		<div class="new-form">
-			<%= render partial: 'likes_and_dislikes/new_form', flash: flash %>
+			<%= render 'likes/new_form', flash: flash %>
 
 
     	</div>

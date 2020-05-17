@@ -1,13 +1,11 @@
-class LikeAndDislike < ApplicationRecord
+class Like < ApplicationRecord
 	attachment :image # 画像用
 
 
   has_many :users,through: :UserStatus
 
 	#ユーザーの性癖
-  has_many :likes_status,       class_name: 'UserStatus',
-                                foreign_key: 'like_id',
-                                dependent: :destroy
+  has_many :user_status,dependent: :destroy
 
   # 地雷表示
   has_many :dislikes_status,      class_name: 'UserStatus',

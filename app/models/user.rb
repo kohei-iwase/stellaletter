@@ -28,10 +28,7 @@ class User < ApplicationRecord
   has_many :systems, through: :user_status, source: :system
 
   #　性癖表示
-  has_many :likes_status,       class_name: 'UserStatus',
-                                foreign_key: 'like_id',
-                                dependent: :destroy
-  has_many :likes, through: :likes_status, source: :like
+  has_many :likes, through: :user_status, source: :like
 
 
   # 地雷表示
@@ -73,7 +70,7 @@ class User < ApplicationRecord
   end
 
   def follow_like(like)
-    user_status.create(like_id: like.id)
+    user_status.create!(like_id: like.id)
   end
 
   def unfollow_like(like)
@@ -85,11 +82,11 @@ class User < ApplicationRecord
   end
 
   def follow_dislike(dislike)
-    likes_status.create(dislike_id: dislike.id)
+    user_status.create(dislike_id: dislike.id)
   end
 
   def unfollow_dislike(dislike)
-    dislikes_status.find_by(dislike_id: dislike.id).destroy
+    user_status.find_by(dislike_id: dislike.id).destroy
   end
 
   def following_dislike?(dislike)

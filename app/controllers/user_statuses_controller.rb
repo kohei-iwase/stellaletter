@@ -24,13 +24,16 @@ before_action :set_user
 	end
 
 	def create_likes
-		@like = LikeAndDislike.find(params[:like_id])
+		@like = Like.find(params[:like_id])
 		@user.follow_like(@like)
-		redirect_to likes_and_dislikes_path
+		redirect_to likes_path
 	end
 
-
-
+	def destroy_likes
+		@like = UserStatus.find(params[:id]).like
+		@user.unfollow_like(@like)
+		redirect_to likes_path
+	end
 
 	def index
 		@status = @user.statuses.all
@@ -40,11 +43,6 @@ before_action :set_user
 		if @status.update(user_status_params)
 		redirect_to systems_path
 	 end
-	end
-
-	def destroy_all #カート内アイテム全部消去
-		@user.statuses.destroy_all
-		redirect_to statuses_path, success: "カート空にしました"
 	end
 
 	  private

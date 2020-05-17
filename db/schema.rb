@@ -123,12 +123,12 @@ ActiveRecord::Schema.define(version: 2020_05_15_094724) do
     t.index ["to_id"], name: "index_letters_on_to_id"
   end
 
-  create_table "like_and_dislikes", force: :cascade do |t|
+  create_table "likes", force: :cascade do |t|
     t.string "name", default: ""
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_like_and_dislikes_on_name"
+    t.index ["name"], name: "index_likes_on_name"
   end
 
   create_table "partnerships", force: :cascade do |t|

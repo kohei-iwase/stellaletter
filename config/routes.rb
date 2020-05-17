@@ -26,13 +26,14 @@ Rails.application.routes.draw do
   resources :notifications, only: :index
 
   resources :systems, only: [:create,:edit,:update,:destroy,:show,:index]
-  resources :likes_and_dislikes, only: [:create,:edit,:update,:destroy,:show,:index] 
+  resources :likes, only: [:create,:edit,:update,:destroy,:show,:index] 
 
 
 
   resources :user_statuses, only: [:create,:destroy] do
     collection do
       post 'create_likes'
+      delete 'destroy_likes'
     end
   end
 

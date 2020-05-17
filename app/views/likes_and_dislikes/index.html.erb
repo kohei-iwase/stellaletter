@@ -1,9 +1,14 @@
+
 <div class="content-box">
     <div class ="row">
         <div class="title">
             <h1>性癖一覧・追加画面</h1>
         </div>
         <div class="main-content">
+            <div class="col-xs-3">
+                <%= render 'users/user_box', user: @user%>
+            </div>
+            <div class="col-xs-9">
 		   <h3>性癖一覧</h3>
 				<% @likes.each do |like| %>
 					<div class="card-form-wrapper">
@@ -25,13 +30,10 @@
 		</div>
 			<hr>
 	<h3>システム追加</h3>
-	<div class="col-xs-8">
 		<div class="new-form">
 			<%= render partial: 'likes_and_dislikes/new_form', flash: flash %>
 
 
     	</div>
-    </div>
-
     </div>
 </div>

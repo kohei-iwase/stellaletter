@@ -2,7 +2,7 @@ class LikeAndDislike < ApplicationRecord
 	attachment :image # 画像用
 
 
-  has_many :users
+  has_many :users,through: :UserStatus
 
 	#ユーザーの性癖
   has_many :likes_status,       class_name: 'UserStatus',
@@ -10,7 +10,7 @@ class LikeAndDislike < ApplicationRecord
                                 dependent: :destroy
 
   # 地雷表示
-  has_many :dislikes_status, class_name: 'UserStatus',
+  has_many :dislikes_status,      class_name: 'UserStatus',
                                   foreign_key: 'dislike_id',
                                   dependent: :destroy
 

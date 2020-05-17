@@ -24,6 +24,7 @@ class User < ApplicationRecord
 
   has_many :user_status,dependent: :destroy
 
+  # システム表示
   has_many :systems, through: :user_status, source: :system
 
   #　性癖表示
@@ -72,11 +73,11 @@ class User < ApplicationRecord
   end
 
   def follow_like(like)
-    likes_status.create(like_id: like.id)
+    user_status.create(like_id: like.id)
   end
 
   def unfollow_like(like)
-    likes_status.find_by(like_id: like.id).destroy
+    user_status.find_by(like_id: like.id).destroy
   end
 
   def following_like?(like)

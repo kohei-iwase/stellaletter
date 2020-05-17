@@ -23,9 +23,12 @@
             <h6>性癖は未設定です</h6>
         <% else %>
             <% @user.likes.each do |like| %>
-                <span class= 'user-likes'><%= likes.name %></span>
+                <span class= 'user-likes'><%= like.name %></span>
             <% end %>
         <% end %>
+        <div class="button-form">
+            <%= link_to "性癖一覧へ", likes_and_dislikes_path, class: "btn btn-default"%>
+        </div>
     </div>
     <div class="user-dislikes">
         <h5>地雷</h5>

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 	def show
     @characters = @user.characters
     @systems = @user.systems.order(created_at: :desc).page(params[:page]).per(4)
-    # @likes = @user.likes.order(created_at: :desc).page(params[:page]).per(4)
+    @likes = @user.likes.all
 
 	end
 

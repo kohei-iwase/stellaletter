@@ -12,9 +12,11 @@ class LikesAndDislikesController < ApplicationController
     end
 
 	def index
+		@user = current_user
 		@like = LikeAndDislike.new
 		@likes = LikeAndDislike.all
-		@status = current_user.user_status.build #モデルなのでbuildを使用
+		@status = @user.user_status.build #モデルなのでbuildを使用
+		@systems = @user.systems.order(created_at: :desc).page(params[:page]).per(4)
 	end
 
 

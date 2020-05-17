@@ -1,11 +1,11 @@
 
-<%# if current_user.following_like?(like) %>
-	<%#= form_for(current_user.user_status.find_by(like_id: like.id), remote: true,method: :delete) do |f| %>
-		<%#= f.submit "マイシステムから外す", class: "btn btn-danger" %>
-	<%# end %>
-<%# else %>
+<% if current_user.following_like?(like) %>
+	<%= form_for(current_user.user_status.find_by(like_id: like.id), remote: true,method: :delete) do |f| %>
+		<%= f.submit "マイシステムから外す", class: "btn btn-danger" %>
+	<% end %>
+<% else %>
 	<%= form_for(current_user.user_status.build, url:{controller: 'user_statuses', action: 'create_likes'},remote: true) do |f| %>
 		<%= hidden_field_tag :like_id, like.id %>
 		<%= f.submit "マイシステムに加える", class: "btn btn-primary" %>
 	<% end %>
-<%# end %>
+<% end %>

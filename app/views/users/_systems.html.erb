@@ -1,7 +1,7 @@
 <h5>マイシステム</h5>
-    <% if systems.nil? %>
-        <h6>マイシステムは未設定です</h6>
-    <% else %>
+
+    <% if systems.any? %>
+
         <% systems.each do |system| %>
             <%= link_to system_path(system) do %>
             <div class="status-card-wrapper">
@@ -16,6 +16,8 @@
             </div>
             <% end %>
         <% end %>
+    <% else %>
+        <h6>マイシステムは未設定です</h6>
      <% end %>
          <div class="button-form">
             <%= link_to "システム一覧へ", systems_path, class: "btn btn-default"%>

@@ -1,0 +1,24 @@
+<h5>性癖</h5>
+
+    <% if likes.any? %>
+
+        <% likes.each do |like| %>
+            <%= link_to like_path(like) do %>
+            <div class="like-card-wrapper">
+                <div class= 'like-card'>
+                    <div class="like-image">
+                        <%= attachment_image_tag like, :image,:width =>'95%' ,fallback: "users/no_image.png"%>
+                    </div>
+                    <div class="like-title">
+                        <h4><%= like.name %></h4>
+                    </div>
+                </div>
+            </div>
+            <% end %>
+        <% end %>
+    <% else %>
+        <h6>性癖は未設定です</h6>
+     <% end %>
+         <div class="button-form">
+            <%= link_to "性癖一覧へ", likes_path, class: "btn btn-default"%>
+        </div>

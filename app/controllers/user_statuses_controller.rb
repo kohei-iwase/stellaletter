@@ -30,7 +30,7 @@ before_action :set_user
 	end
 
 	def destroy_likes
-		@like = UserStatus.find(params[:id]).like
+		@like = Like.find(params[:like_id])
 		@user.unfollow_like(@like)
 		redirect_to likes_path
 	end

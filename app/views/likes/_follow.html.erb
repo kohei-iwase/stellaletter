@@ -1,5 +1,6 @@
 <% if current_user.following_like?(like) %>
 	<%= form_for(current_user.user_status.find_by(like_id: like.id), url:{controller: 'user_statuses', action: 'destroy_likes'},remote: true,method: :delete) do |f| %>
+		<%= hidden_field_tag :like_id, like.id %>
 		<%= f.submit "性癖から外す", class: "btn btn-danger" %>
 	<% end %>
 <% else %>

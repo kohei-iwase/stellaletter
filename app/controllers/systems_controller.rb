@@ -24,6 +24,7 @@ class SystemsController < ApplicationController
     end
 
 	def index
+		@user = current_user
 		@system = System.new
 		@systems = System.all
 		@status = current_user.user_status.build #モデルなのでbuildを使用

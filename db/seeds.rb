@@ -82,7 +82,42 @@ Character.create!(user_id:2,
 System.create!(	image: 		File.open("./app/assets/images/books/2.jpg"),
 				title: 		"常夜国騎士譚ドラクルージュ",
 				text: 	"基本ルールブック",
-				official: 	true)
+				official: 	true,)
+
+System.create!(	image: 		File.open("./app/assets/images/books/5.jpg"),
+				title: 		"銀剣のステラナイツ",
+				text: 	"基本ルールブック",
+				official: 	true,)
+
+System.create!(	image: 		File.open("./app/assets/images/books/11.jpg"),
+				title: 		"ブラッドパス",
+				text: 	"基本ルールブック",
+				official: 	true,)
+
+System.create!(	image: 		File.open("./app/assets/images/books/10.jpg"),
+				title: 		"フタリソウサ",
+				text: 	"基本ルールブック",
+				official: 	true,)
+
+Like.create!( name:"悪友",)
+Like.create!( name:"犬猿",)
+Like.create!( name:"仇敵",)
+Like.create!( name:"村焼き",)
+Like.create!( name:"世界崩壊",)
+Like.create!( name:"実験生物",)
+Like.create!( name:"パートナー",)
+Like.create!( name:"偽善",)
+Like.create!( name:"貴族",)
+
+UserSkill.create!(name:"PL",)
+UserSkill.create!(name:"GM",)
+UserSkill.create!(name:"動画作成",)
+UserSkill.create!(name:"小説",)
+UserSkill.create!(name:"SS",)
+UserSkill.create!(name:"シナリオ作成",)
+UserSkill.create!(name:"立ち絵作成",)
+UserSkill.create!(name:"音響作成",)
+UserSkill.create!(name:"部屋作成",)
 
 # Book.create!(	image: 		File.open("./app/assets/images/books/2.jpg"),
 # 				system_id: 1,
@@ -105,10 +140,6 @@ System.create!(	image: 		File.open("./app/assets/images/books/2.jpg"),
 # 				supple: 	"紅月のミンネザング",
 # 				official: 	false)
 
-System.create!(	image: 		File.open("./app/assets/images/books/5.jpg"),
-				title: 		"銀剣のステラナイツ",
-				text: 	"基本ルールブック",
-				official: 	true)
 # Book.create!(	image: 		File.open("./app/assets/images/books/6.jpg"),
 # 				system_id: 2,
 # 				title: 	"霧と桜のマルジナリア",
@@ -134,9 +165,9 @@ User.create!(name: name,
 			password_confirmation: password)
 end
 
-#最初の20名のユーザーにキャラクターを作成
+#最初の30名のユーザーにキャラクターを作成
 users = User.order(:created_at).take(30)
-3.times do
+1.times do
 name 		= Faker::Movies::StarWars.character
 nickname 	= Faker::Movies::StarWars.call_number
 race		= Faker::Movies::StarWars.specie
@@ -145,11 +176,31 @@ from		= Faker::Movies::StarWars.planet
 users.each { |user| user.characters.create!(name: name,nickname: nickname, race: race,from: from ) }
 end
 
+1.times do
+name 		= Faker::Movies::StarWars.character
+nickname 	= Faker::Movies::StarWars.call_number
+race		= Faker::Movies::StarWars.specie
+comment		= Faker::Movies::StarWars.specie
+from		= Faker::Movies::StarWars.planet
+users.each { |user| user.characters.create!(name: name,nickname: nickname, race: race,from: from ) }
+end
 
 # フォロイーとフォロワーを作成
 users = User.all
-user = users.first 
+skills = UserSkill.all
+systems = System.all
+likes = Like.all
+
+user = users.first
 following = users[2..30] 
 followers = users[3..30]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+skill = skills.first
+system = systems.first
+like = likes.first
+
+user.follow_skill(skill)
+user.follow_system(system)
+user.follow_like(like)

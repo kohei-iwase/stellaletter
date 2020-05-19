@@ -1,8 +1,8 @@
 <h5>性癖</h5>
 
-    <% if likes.any? %>
+    <% if @user.likes.any? %>
 
-        <% likes.each do |like| %>
+        <% @user.likes.each do |like| %>
             <%= link_to like_path(like) do %>
             <div class="like-card-wrapper">
                 <div class= 'like-card'>

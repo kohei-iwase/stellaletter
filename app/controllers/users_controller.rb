@@ -44,8 +44,9 @@ class UsersController < ApplicationController
   end
 
   def timelines
-    @characters = current_user.characters.build
-    @timelines = current_user.timeline.order(created_at: :desc).page(params[:page]).per(10)
+    @user = current_user
+    @characters = @user.characters.build
+    @timelines = @user.timeline.order(created_at: :desc).page(params[:page]).per(10)
   end
 
 		private

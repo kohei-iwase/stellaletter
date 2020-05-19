@@ -1,8 +1,8 @@
 <h5>マイシステム</h5>
 
-    <% if systems.any? %>
+    <% if @user.systems.any? %>
 
-        <% systems.each do |system| %>
+        <% @user.systems.each do |system| %>
             <%= link_to system_path(system) do %>
             <div class="status-card-wrapper">
                 <div class= 'status-card'>

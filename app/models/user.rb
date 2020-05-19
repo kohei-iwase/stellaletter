@@ -38,6 +38,10 @@ class User < ApplicationRecord
   has_many :dislikes, through: :dislikes_status, source: :dislike
 
 
+  has_many :user_skills, through: :user_status, source: :user_skill
+
+
+
   # ユーザーをフォローする
   def follow(other_user)
     active_relationships.create(followed_id: other_user.id)
@@ -92,6 +96,19 @@ class User < ApplicationRecord
   def following_dislike?(dislike)
     dislike.include?(dislike)
   end
+
+  def follow_skill(user_skill)
+    user_status.create!(user_skill_id: user_skill.id)
+  end
+
+  def unfollow_skill(user_skill)
+    user_status.find_by(user_skill_id: user_skill.id).destroy
+  end
+
+  def following_skill?(user_skill)
+    user_skills.include?(user_skill)
+  end
+
 
   # タイムラインの構築
   def timeline

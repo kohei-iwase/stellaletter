@@ -35,6 +35,18 @@ before_action :set_user
 		redirect_to likes_path
 	end
 
+	def create_skills
+		@skill = UserSkill.find(params[:user_skill_id])
+		@user.follow_skill(@skill)
+		redirect_to user_skills_path
+	end
+
+	def destroy_skills
+		@skill = UserSkill.find(params[:user_skill_id])
+		@user.unfollow_skill(@skill)
+		redirect_to user_skills_path
+	end
+
 	def index
 		@status = @user.statuses.all
 	end

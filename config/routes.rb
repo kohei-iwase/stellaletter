@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
   resources :systems, only: [:create,:edit,:update,:destroy,:show,:index]
   resources :likes, only: [:create,:edit,:update,:destroy,:show,:index] 
+  resources :user_skills, only: [:create,:edit,:update,:destroy,:show,:index] 
 
 
 
@@ -34,6 +35,8 @@ Rails.application.routes.draw do
     collection do
       post 'create_likes'
       delete 'destroy_likes'
+      post 'create_skills'
+      delete 'destroy_skills'
     end
   end
 

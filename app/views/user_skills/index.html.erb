@@ -1,37 +1,36 @@
-
 <div class="content-box">
     <div class ="row">
         <div class="title">
-            <h1>性癖一覧・追加画面</h1>
+            <h1>スキル一覧・追加画面</h1>
         </div>
         <div class="main-content">
             <div class="col-xs-3">
                 <%= render 'users/user_box', user: @user%>
             </div>
             <div class="col-xs-9">
-		   <h3>性癖一覧</h3>
-				<% @likes.each do |like| %>
+		   <h3>スキル一覧</h3>
+				<% @skills.each do |user_skill| %>
 					<div class="card-form-wrapper">
     		            <div class="system-card-wrapper">
             		        	<div class= 'status-card'>
                     		    	<div class="status-image">
-                            			<%= attachment_image_tag like, :image,:width =>'95%' ,fallback: "users/no_image.png"%>
+                            			<%#= attachment_image_tag user_skill, :image,:width =>'95%' ,fallback: "users/no_image.png"%>
                         			</div>
                         			<div class="status-title">
-                            			<%= like.name %>
+                            			<%= user_skill.name %>
                         			</div>
                     			</div>
 		               	</div>
 		               	<div class="system-follow-form">
-							<%= render "likes/follow" ,like: like %>
+							<%= render "user_skills/follow" ,user_skill: user_skill %>
 						</div>
 					</div>
 				<% end %>
 			<hr>
 	           
 		<div class="new-form">
-            <h3>性癖追加</h3>
-			<%= render 'likes/new_form', flash: flash %>
+            <h3>スキル追加</h3>
+			<%= render 'user_skills/new_form', flash: flash %>
     	</div>
 </div>
     </div>

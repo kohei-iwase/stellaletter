@@ -8,10 +8,9 @@ Rails.application.routes.draw do
 	    end
     end
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :characters do
     member do
-      get :partners
+      get :partners #パートナーページ
     end
     resources :letters, only: [:create,:edit,:update,:destroy,:show,:index]
   	resources :bouquets, only: [:create,:destroy]
@@ -21,7 +20,13 @@ Rails.application.routes.draw do
   #フォロイー、フォロワー作成用
   resources :relationships, only: [:create,:destroy]
   #パートナー作成用
-  resources :pertnerships,  only: [:create,:destroy]
+  resources :partnerships,  only: [:create,:destroy,:show,:index,:update,:edit] do
+    collection do
+      patch 'create_match'
+      delete 'destroy_match'
+    end
+  end
+
   #通知用のルーティング
   resources :notifications, only: :index
 

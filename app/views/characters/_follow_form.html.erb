@@ -1,0 +1,11 @@
+<% if @character.user == current_user %>
+	<div class="follow_form">
+		<% if @character.followed_by?(partner) %>
+			<%= render 'characters/match',partner: partner %>		
+		<% elsif @character.following?(partner) %>
+			<%= render 'characters/unfollow',partner: partner %>
+		<% else %>
+			<%= render 'characters/follow',partner: partner %>
+		<% end %>
+	</div>
+<% end%>

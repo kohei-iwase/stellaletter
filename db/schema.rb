@@ -134,11 +134,14 @@ ActiveRecord::Schema.define(version: 2020_05_15_094724) do
   create_table "partnerships", force: :cascade do |t|
     t.integer "follower_id", null: false
     t.integer "followed_id", null: false
+    t.boolean "match", default: false, null: false
+    t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["followed_id", "follower_id"], name: "index_partnerships_on_followed_id_and_follower_id", unique: true
     t.index ["followed_id"], name: "index_partnerships_on_followed_id"
-    t.index ["follower_id"], name: "index_partnerships_on_follower_id"
+    t.index ["follower_id"], name: "index_partnerships_on_follower_id", unique: true
+    t.index ["match"], name: "index_partnerships_on_match"
   end
 
   create_table "playing_styles", force: :cascade do |t|

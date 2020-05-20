@@ -49,11 +49,17 @@ class CharactersController < ApplicationController
 	def partners
 	    @character = Character.find(params[:id])
 		@user = @character.user
+		@characters = current_user.bouquets_characters.includes(:user)
+        @partnership = Partnership.find_by(follower_id: @character)
+        @followers = @character.followers.page(params[:page]).per(10)
+
+#        @partnership = @character.active_partnership
+
 	end
 
 	private
 		def character_params
-	    	params.require(:character).permit(:image, :name, :nickname, :gender, :age, :race, :profile, :pr)
+	    	params.require(:character).permit(:image, :name, :nickname, :gender, :age, :race, :profile, :comment)
 		end
 
 end

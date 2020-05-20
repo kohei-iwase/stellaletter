@@ -1,0 +1,5 @@
+<%= form_for(@character.active_partnerships.find_by(followed_id: partner.id), html: { method: :delete }, remote: true) do |f| %>
+	<%= hidden_field_tag :followed_id, partner.id %>
+	<%= hidden_field_tag :follower_id, @character.id %>
+	<%= f.submit "申請を取り下げる", class: "btn btn-default" %>
+<% end %>

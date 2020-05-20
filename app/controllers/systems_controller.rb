@@ -1,24 +1,11 @@
 class SystemsController < ApplicationController
 	def create
-		# @n = params[:system][:n]
-		# if 		@n.to_i == 1 then
-		# 	 	@system.name = params[:system][:name]
-		# elsif   @n.to_i == 2 then
-		# 	 	@system.name = params[:system][:name]
-		# end
-		
-		# @s = params[:system][:s]
-		# if 	@s.to_i == 3 then
-		#    	@system.supple = params[:system][:supple]
-		# elsif
-		# 	@system.supple = "基本ルールブック"
-		# end
 		@system = System.new(system_params)
 		if @system.save #入力されたデータをdbに保存する。
-  			redirect_to systems_path, success: "新しいルルブ/サプリを登録しました！"
+  			redirect_to systems_path, success: "新しいシステムを登録しました！"
 	    else
 	      @systems = System.all
-	      flash[:danger] = 'ルルブ/サプリの登録に失敗しました。名前の入力欄は空白になっていませんか？'
+	      flash[:danger] = 'システムの登録に失敗しました。名前の入力欄は空白になっていませんか？'
 	      render :index
 	    end
     end
@@ -39,7 +26,7 @@ class SystemsController < ApplicationController
   		@system = System.find(params[:id])
   	  	if @system.update(system_params)
   			redirect_to systems_path, success: "ジャンルの情報が更新されました！"
-  	  	else #if文でエラー発生時と正常時のリンク先を枝分かれにしている。
+  	  	else
         	flash[:danger] = "ジャンルの情報は更新されませんでした。名前の入力欄は空白になっていませんか？"
   	    	render :edit
   	  	end

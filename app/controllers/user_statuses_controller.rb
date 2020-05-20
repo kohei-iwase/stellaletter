@@ -6,7 +6,6 @@ before_action :set_user
 		@system = System.find(params[:system_id])
 		@user.follow_system(@system)
 		redirect_to systems_path
-
 		# respond_to do |format|
 		# 	format.html	{redirect_back(fallback_location: @system)}
 		# 	format.js

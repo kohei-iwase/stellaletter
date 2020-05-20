@@ -16,6 +16,11 @@ User.create!(name: "検証用ユーザー",
 			email: "2@2",
 			password: "222222", password_confirmation: "222222")
 
+User.create!(name: "おまけ",
+			image: File.open("./app/assets/images/users/2.png"),
+			email: "3@3",
+			password: "333333", password_confirmation: "333333")
+
 Character.create!(user_id:1,
 				image: File.open("./app/assets/images/characters/1.jpeg"),
 				name: "日吉若",
@@ -65,6 +70,51 @@ Character.create!(user_id:1,
 			    comment:"鳴子のために",)
 
 Character.create!(user_id:2,
+				image: File.open("./app/assets/images/characters/5.jpeg"),
+				name: "グランツ公",
+				age:"400くらい",
+				nickname:"美麗公",
+				personality:"多分すぐ脱ぐ",
+				weakness:"美しすぎる",
+				strength:"美しすぎる",
+    			birthday:"不明",
+    			bload_type:"4",
+			    race:"騎士",
+			    from:"常夜国",
+			    profile:"英雄らしい",
+			    comment:"フリー素材？",)
+
+Character.create!(user_id:2,
+				image: File.open("./app/assets/images/characters/6.jpeg"),
+				name: "美麗公",
+				age:"400くらい",
+				nickname:"美麗公",
+				personality:"多分すぐ脱ぐ",
+				weakness:"美しすぎる",
+				strength:"美しすぎる",
+    			birthday:"不明",
+    			bload_type:"4",
+			    race:"騎士",
+			    from:"常夜国",
+			    profile:"英雄らしい",
+			    comment:"フリー素材？",)
+
+Character.create!(user_id:2,
+				image: File.open("./app/assets/images/characters/7.jpeg"),
+				name: "ローゼンブルク公",
+				age:"400くらい",
+				nickname:"美麗公",
+				personality:"多分すぐ脱ぐ",
+				weakness:"美しすぎる",
+				strength:"美しすぎる",
+    			birthday:"不明",
+    			bload_type:"4",
+			    race:"騎士",
+			    from:"常夜国",
+			    profile:"英雄らしい",
+			    comment:"フリー素材？",)
+
+Character.create!(user_id:3,
 				image: File.open("./app/assets/images/characters/5.jpeg"),
 				name: "グランツ公",
 				age:"400くらい",

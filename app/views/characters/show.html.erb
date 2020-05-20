@@ -61,11 +61,15 @@
                 </div>
                 <div class="col-xs-5">
                     <div class="buttons">
-                        <%= render 'characters/bouquets_button', character: @character%>
+                        <%=link_to "パートナー設定画面へ",partners_character_path(@character) %>
                     </div>
                     <div class="character-image">
                         <%= attachment_image_tag @character, :image,fallback: "characters/no_image.png"%>
                     </div>
+                    <div class="buttons">
+                        <%= render 'characters/bouquets_button', character: @character%>
+                    </div>
+
                 </div>
                 <div class="col-xs-3">
                     <div class="comment">

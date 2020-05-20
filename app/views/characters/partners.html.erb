@@ -8,17 +8,50 @@
                     あなた
                     <%= render 'users/user_box', user: current_user%>
                 </div>
-                <div class="col-xs-3">
-                    うちのこ
-                    <%= render 'characters/character_box', character: @character%>
-                </div>
-                <div class="col-xs-3">
-                    よそのこ
-                    <%= render 'characters/character_box', character: @character%>
-                </div>
-                <div class="col-xs-3">
-                    あいて
-                    <%= render 'users/user_box', user: @user%>
+                <div class="col-xs-9">
+                    <div class = "row">
+                        <div class="col-xs-6">
+                            <h2>うちのこ</h2>
+                            <br>
+                            <%= render 'characters/cards', character: @character%>
+                        </div>
+                        <div class="col-xs-6">
+                            <% if @partnership.nil? %>
+                            <h2>パートナーを<br>見つけよう！</h2>
+                            <% elsif @partnership.match == true %>
+                            パートナー
+                            <%= render 'characters/show_card', character: @partnership.followed%>
+                            <%= render 'characters/follow_form', partner: @partnership.followed%>
+                            <% else %>
+                            <h2>パートナー申請中</h2>
+                            <br>
+                            <%= render 'characters/show_card', character: @partnership.followed%>
+                            <%= render 'characters/follow_form', partner: @partnership.followed%>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h3><%= @character.name %>に届いたブーケ </h3>
+                                <% @followers.each do |follower| %>
+                                        <%= render 'characters/cards', character: follower %>
+                                    <% if @partnership.nil? %>
+                                        <%= render 'characters/follow_form', partner: follower %>
+                                    <% end %>
+
+                                <% end %>
+                        </div>
+                        <div class="col-xs-12">
+                            <h3>お気に入りのよその子</h3>
+                                <% @characters.each do |partner| %>
+                                    <%= render 'characters/cards', character: partner%>
+                                    <% if @partnership.nil? %>
+                                        <%= render 'characters/follow_form', partner: partner%>
+                                    <% end %>
+
+                                <% end %>
+                        </div>
+                    </div>
                 </div>
 
         </div>

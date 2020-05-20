@@ -1,0 +1,5 @@
+<%= form_for(@character.active_partnerships.build, remote: true) do |f| %>
+	<%= hidden_field_tag :followed_id, partner.id %>
+	<%= hidden_field_tag :follower_id, @character.id %>
+<%= f.submit "パートナーに申し込む", class: "btn btn-primary" %>
+<% end %>

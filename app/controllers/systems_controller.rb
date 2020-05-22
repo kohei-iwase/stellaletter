@@ -1,4 +1,6 @@
 class SystemsController < ApplicationController
+  before_action :set_system,only: [:show,:update, :destroy, :edit]
+
 	def create
 		@system = System.new(system_params)
 		if @system.save #入力されたデータをdbに保存する。
@@ -19,11 +21,12 @@ class SystemsController < ApplicationController
 	end
 
 	def edit
-		@system = System.find(params[:id])
+	end
+
+	def show
 	end
 
 	def update
-  		@system = System.find(params[:id])
   	  	if @system.update(system_params)
   			redirect_to systems_path, success: "ジャンルの情報が更新されました！"
   	  	else
@@ -33,6 +36,10 @@ class SystemsController < ApplicationController
     end
 
     private
+    def set_system
+  		@system = System.find(params[:id])
+    end
+
     def system_params
 	  	params.require(:system).permit(:title,:official,:image,:text)
     end

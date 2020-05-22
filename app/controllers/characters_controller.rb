@@ -49,7 +49,10 @@ class CharactersController < ApplicationController
 	def partners
 	    @character = Character.find(params[:id])
 		@user = @character.user
-		@characters = current_user.bouquets_characters.includes(:user)
+			if @user != current_user 
+				redirect_to user_path(current_user)
+			end
+		@characters = @user.bouquets_characters
         @partnership = Partnership.find_by(follower_id: @character)
         @followers = @character.followers.page(params[:page]).per(10)
 

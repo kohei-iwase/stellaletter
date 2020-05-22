@@ -35,9 +35,7 @@
                             <h3><%= @character.name %>に届いたブーケ </h3>
                                 <% @followers.each do |follower| %>
                                         <%= render 'characters/cards', character: follower %>
-                                    <% if @partnership.nil? %>
                                         <%= render 'characters/follow_form', partner: follower %>
-                                    <% end %>
 
                                 <% end %>
                         </div>

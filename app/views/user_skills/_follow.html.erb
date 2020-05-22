@@ -1,11 +1,11 @@
-<% if current_user.following_skill?(user_skill) %>
-	<%= form_for(current_user.user_status.find_by(user_skill_id: user_skill.id), url:{controller: 'user_statuses', action: 'destroy_skills'},remote: true,method: :delete) do |f| %>
-		<%= hidden_field_tag :user_skill_id, user_skill.id %>
-		<%= f.submit "マイスキルから外す", class: "btn btn-danger" %>
+<% if current_user.following_skill?(skill) %>
+	<%= form_for(current_user.user_status.find_by(user_skill_id: skill.id), url:{controller: 'user_statuses', action: 'destroy_skills'},remote: true,method: :delete) do |f| %>
+		<%= hidden_field_tag :user_skill_id, skill.id %>
+		<%= f.submit "スキルから外す", class: "btn btn-danger" %>
 	<% end %>
 <% else %>
 	<%= form_for(current_user.user_status.build, url:{controller: 'user_statuses', action: 'create_skills'},remote: true) do |f| %>
-		<%= hidden_field_tag :user_skill_id, user_skill.id %>
-		<%= f.submit "マイスキルに加える", class: "btn btn-primary" %>
+		<%= hidden_field_tag :user_skill_id, skill.id %>
+		<%= f.submit "スキルに加える", class: "btn btn-primary" %>
 	<% end %>
 <% end %>

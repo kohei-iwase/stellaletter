@@ -1,9 +1,18 @@
 <% if @character.user == current_user %>
 	<div class="follow_form">
-		<% if @character.followed_by?(partner) %>
+		<!-- うちのこがよそのこにパートナー申請している時-->
+		<% if @character.following?(partner) %>   		
+		<!-- うちよそが成立している時、うちよそ解除ボタンを表示-->
+			<% if @partnership.match == true %>
+				<%= render 'characters/mismatch',partner: partner %> 
+			<% else %>
+		<!-- うちよそが成立してないとき、パートナー申請解除ボタンを表示-->
+				<%= render 'characters/unfollow',partner: partner %>
+			<% end %>
+		<!-- うちのこがよそのこにパートナー申請されてる時、パートナー受諾or拒否ボタン-->
+		<% elsif @character.followed_by?(partner) %>
 			<%= render 'characters/match',partner: partner %>		
-		<% elsif @character.following?(partner) %>
-			<%= render 'characters/unfollow',partner: partner %>
+		<!-- それ以外の時-->
 		<% else %>
 			<%= render 'characters/follow',partner: partner %>
 		<% end %>

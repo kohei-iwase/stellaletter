@@ -2,7 +2,7 @@
 	<%= hidden_field_tag :followed_id, partner.id %>
 	<%= hidden_field_tag :follower_id, @character.id %>
 	<%= hidden_field_tag :match, true %>
-<%= f.submit "パートナーになる", class: "btn btn-primary" %>
+<%= f.submit "パートナーに選ぶ", class: "btn btn-primary" %>
 <% end %>
 
 <%= form_for(@partnership = partner.active_partnerships.find_by(followed_id: @character.id), url:{controller: 'partnerships', action: 'destroy_match'},remote: true,method: :delete) do |f| %>

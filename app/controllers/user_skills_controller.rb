@@ -18,6 +18,9 @@ class UserSkillsController < ApplicationController
 		@systems = @user.systems.order(created_at: :desc).page(params[:page]).per(4)
 	end
 
+	def show
+		@skill = UserSkill.find(params[:id])
+	end
 
     private
     def skill_params

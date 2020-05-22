@@ -32,10 +32,10 @@ class User < ApplicationRecord
 
 
   # 地雷表示
-  has_many :dislikes_status, class_name: 'UserStatus',
-                                  foreign_key: 'dislike_id',
-                                  dependent: :destroy
-  has_many :dislikes, through: :dislikes_status, source: :dislike
+  # has_many :dislikes_status, class_name: 'UserStatus',
+  #                                 foreign_key: 'dislike_id',
+  #                                 dependent: :destroy
+  # has_many :dislikes, through: :dislikes_status, source: :dislike
 
 
   has_many :user_skills, through: :user_status, source: :user_skill

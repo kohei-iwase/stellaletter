@@ -31,9 +31,9 @@ class PartnershipsController < ApplicationController
   end
 
   def update
+    @character = Character.find(params[:follower_id]) #自分のキャラクター
     @partner = Character.find(params[:followed_id]) #パートナー
     @partnership = Partnership.find_by(follower_id: @partner.id)
-    @partnership.match = true
     @partnership.update(partnership_params)
     redirect_to partners_character_path(@character)
   end
@@ -59,7 +59,9 @@ class PartnershipsController < ApplicationController
   end
 
   def index
-    @partnerships = Pertnership.where(match: true) #マッチしたものだけ表示
+    @user = current_user
+     @partnerships = Partnership.where(match: true) #マッチしたものだけ表示
+ #   @partnerships = Partnership.all
   end
 
 
@@ -74,7 +76,7 @@ class PartnershipsController < ApplicationController
       end
 
       def partnership_params
-          params.require(:partnership).permit(:message,:match)
+          params.permit(:message,:match,:followed_id,:follower_id)
       end
 
 

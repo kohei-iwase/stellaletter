@@ -1,0 +1,61 @@
+<div class="content-box">
+    <div class ="row">
+        <div class="title">
+            <h1>スキル詳細</h1>
+        </div>
+        <div class="main-content">
+            <div class="col-xs-3">
+                <div class="like-box">
+                    <div class="like-image">
+                        <%= attachment_image_tag @system, :image,width:'90%',fallback: "users/no_image.png"%>
+                    </div>
+                    <div class="user-profile">
+                        システム名
+                        <h3><%= @system.title %></h3>
+                    </div>
+                    <div class="buttons">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-9">
+                <div class = "search_form">
+                    <h3>検索</h3>
+                    <%= form_with(url: users_path, method: :get, local: true) do |f| %>
+                        <span class="glyphicon glyphicon-search"></span>
+                        <%= text_field_tag 'search[content]' %><br>
+                        <%= select_tag 'search[model]', options_for_select({"ユーザー": "user"}) %>
+                        <%= select_tag 'search[how]', options_for_select({"部分一致": "partical"}) %>
+                        <%= f.submit "ユーザー検索" %>
+                    <% end %>
+                </div>
+            <hr>
+                <div class="content-index">
+        		   <h3><%= @system.title %>を所持しているユーザー</h3>
+				        <% @system.users.each do |user| %>
+                        <div class = "user-index-box">
+                            <div class = "user-image">
+                                <%= attachment_image_tag user, :image,width:"170px",fallback: "users/no_image.png"%>
+                            </div>
+                            <div class="user-index-profile">
+                                <div class= "user-name">
+                                    <h3><%=link_to user.name, user_path(user) %></h3>
+                                 </div>
+                                 <div class="user-likes">
+                                        <% user.systems.last(5).each do |system| %>
+                                            <%= link_to user_skills_path(system) do %>
+                                            <div class="like-card-wrapper">
+                                                <%= render "systems/index" ,system: system %>
+                                            </div>
+                                            <% end %>
+                                        <% end %>
+                                 </div>
+                            </div>
+                        </div>
+				        <% end %>
+                    </div>
+                </div>
+			<hr>
+            </div>
+        </div>
+    </div>
+</div>

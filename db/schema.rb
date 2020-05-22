@@ -189,11 +189,12 @@ ActiveRecord::Schema.define(version: 2020_05_15_094724) do
   end
 
   create_table "user_skills", force: :cascade do |t|
-    t.string "name"
+    t.string "name", default: ""
     t.string "text"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_user_skills_on_name"
+    t.index ["name"], name: "index_user_skills_on_name", unique: true
   end
 
   create_table "user_statuses", force: :cascade do |t|
@@ -232,6 +233,7 @@ ActiveRecord::Schema.define(version: 2020_05_15_094724) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["name"], name: "index_users_on_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index [nil], name: "index_users_on_sns"
   end
 
 end

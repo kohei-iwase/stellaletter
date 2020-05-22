@@ -43,7 +43,7 @@ a {
 body{
   margin:auto !important;
   background-image: image-url("stars/5.jpg");
-  background-color: rgba(255,255,255,0.7);
+  background-position: cover;
   border-radius:8px;
 }
 
@@ -64,9 +64,14 @@ img{
   max-height: 100px;
 }
 
-img-circle{
-		border:3px;
-		border-color: black;
+.user-image{
+  display: inline-block;
+  text-align:center;
+  border-radius:100px;
+  max-height: 150px;
+  max-width: 150px;
+  margin:20px;
+  overflow: hidden;
 }
 
 .title{
@@ -128,11 +133,40 @@ img-circle{
 }
 
 /* user */
+$box-color-bg: rgba(255,255,255,0.5) !default;
+$box-width:270px !default;
+$box-height:200px !default;
 
-.user-box h3 {
+.user-index-box{
+  background-color: $box-color-bg; 
+  width:100%;
+  height:$box-height;
+  display: inline-flex;
+  text-align: center;
+  margin-bottom: 15px;
+
+}
+
+.user-index-profile{
+  height:100%;
+  width:600px;
+}
+
+.user-likes{
+  width:100%;
+}
+
+.user-name{
+  border-bottom: double 5px #fee904;
+  text-align:left;
+  padding-left:5px; 
+}
+.user-profile h3 {
   /*線の種類（二重線）太さ 色*/
   border-bottom: double 5px #fee904;
   text-align:center;
+  padding:5px;
+
 }
 .user-box h5 {
   position: relative;
@@ -172,11 +206,12 @@ img-circle{
 }
 
 .user-box{
+  width:$box-width;
 	padding:15px;
 	margin-top: 15px;
 	margin-bottom: 15px;
 	min-height:700px;
-  background-color: rgba(0,0,0,0.3);
+  background-color: $box-color-bg;
 	position:relative; z-index: 0;
 	border: groove 3px gray;
 	border-radius:8px;
@@ -498,7 +533,6 @@ $status-card-height: $status-card-width * $status-card-ratio !default;
     position: relative;
     margin-top: 20px;
     width: 100%;
-    transition: transform 1s;
 }
 
 /*------------------*
@@ -535,7 +569,7 @@ $system-card-height: $system-card-width * $system-card-ratio !default;
 $like-card-ratio: 50 / 50 !default;
 
 // Settings.
-$like-card-width: 65px !default;
+$like-card-width: 110px !default;
 $like-card-height: $like-card-width * $like-card-ratio !default;
 
 .like-card {
@@ -565,10 +599,13 @@ $like-card-height: $like-card-width * $like-card-ratio !default;
   overflow: scroll; 
 }
 .like-title{
-  max-height:100%;
+  height:100%;
+  width:100%;
   overflow: scroll;
   position: absolute;
   top: 0;
+  left:-3px;
+  text-align: center;
   background-color: rgba(0,0,0,0.6);
 
 }
@@ -578,6 +615,8 @@ $like-card-height: $like-card-width * $like-card-ratio !default;
     max-width: $like-card-width;
     perspective: 600px;
     position: relative;
-    margin-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;    
+    margin-left: 5px;    
     width: 100%;
 }

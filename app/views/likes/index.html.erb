@@ -1,4 +1,3 @@
-
 <div class="content-box">
     <div class ="row">
         <div class="title">
@@ -9,30 +8,38 @@
                 <%= render 'users/user_box', user: @user%>
             </div>
             <div class="col-xs-9">
-		   <h3>性癖一覧</h3>
-				<% @likes.each do |like| %>
-					<div class="card-form-wrapper">
-    		            <div class="system-card-wrapper">
-            		        	<div class= 'status-card'>
-                    		    	<div class="status-image">
-                            			<%= attachment_image_tag like, :image,:width =>'95%' ,fallback: "users/no_image.png"%>
-                        			</div>
-                        			<div class="status-title">
-                            			<%= like.name %>
-                        			</div>
-                    			</div>
-		               	</div>
-		               	<div class="system-follow-form">
-							<%= render "likes/follow" ,like: like %>
-						</div>
-					</div>
-				<% end %>
+                <div class = "search_form">
+                    <h3>検索</h3>
+                    <%= form_with(url: likes_path, method: :get, local: true) do |f| %>
+                        <span class="glyphicon glyphicon-search"></span>
+                        <%= text_field_tag 'search[content]' %><br>
+                        <%= select_tag 'search[model]', options_for_select({"性癖": "like"}) %>
+                        <%= select_tag 'search[how]', options_for_select({"部分一致": "partical"}) %>
+                        <%= f.submit "性癖検索" %>
+                    <% end %>
+                </div>
+            <hr>
+                <div class="content-index">
+        		   <h3>性癖一覧</h3>
+				        <% @likes.each do |like| %>
+                            <div class="like-card-wrapper">
+                                <%= link_to like_path(like) do %>
+                                    <%= render "likes/index" ,like: like %>
+                                <% end %>
+                                <div class="system-follow-form">
+                                    <%= render "likes/follow" ,like: like %>
+                                </div>
+                            </div>
+				        <% end %>
+                </div>
 			<hr>
-	           
-		<div class="new-form">
-            <h3>性癖追加</h3>
-			<%= render 'likes/new_form', flash: flash %>
-    	</div>
-</div>
+		       <div class="new-form">
+                    <h3>性癖追加</h3>
+                        <h4>上記一覧にない場合追加できます
+                            <br>(同じ名前の性癖は追加できません)</h4>
+			         <%= render 'likes/new_form', flash: flash %>
+    	       </div>
+            </div>
+        </div>
     </div>
 </div>

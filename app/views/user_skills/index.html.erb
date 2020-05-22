@@ -9,20 +9,11 @@
             </div>
             <div class="col-xs-9">
 		   <h3>スキル一覧</h3>
-				<% @skills.each do |user_skill| %>
-					<div class="card-form-wrapper">
-    		            <div class="system-card-wrapper">
-            		        	<div class= 'status-card'>
-                    		    	<div class="status-image">
-                            			<%#= attachment_image_tag user_skill, :image,:width =>'95%' ,fallback: "users/no_image.png"%>
-                        			</div>
-                        			<div class="status-title">
-                            			<%= user_skill.name %>
-                        			</div>
-                    			</div>
-		               	</div>
+				<% @skills.each do |skill| %>
+                    <div class="like-card-wrapper">
+                            <%= render "user_skills/index" ,skill: skill %>
 		               	<div class="system-follow-form">
-							<%= render "user_skills/follow" ,user_skill: user_skill %>
+							<%= render "user_skills/follow" ,skill: skill %>
 						</div>
 					</div>
 				<% end %>

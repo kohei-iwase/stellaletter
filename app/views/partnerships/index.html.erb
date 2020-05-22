@@ -1,0 +1,19 @@
+<div class="content-box">
+    <div class ="row">
+        <div class="main-content">
+            <div class="col-xs-3">
+                <%= render 'users/user_box', user: @user%>
+            </div>
+            <div class="col-xs-9">
+		   <h3>パートナー一覧</h3>
+				<% @partnerships.each do |partnership| %>
+                    <div class="partner-box">
+                        <%= render 'characters/show_card', character: partnership.followed%>
+                        <%= render 'characters/show_card', character: partnership.follower%>
+                    </div>
+                <% end %>
+            </div>
+	           
+    	</div>
+    </div>
+</div>

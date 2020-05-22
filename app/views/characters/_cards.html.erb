@@ -7,7 +7,7 @@
                 <div class="corner"></div>
                 <div class="corner"></div>
                 <div class="card-name">
-                    <h1><%= character.name %></h1>
+                    <h1><%= link_to character.name,character_path(character) %></h1>
                 </div>
                 <div class="card-image">
                     <%= attachment_image_tag character, :image,width:'100%',fallback: "characters/no_image.png"%>

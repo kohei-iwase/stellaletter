@@ -19,7 +19,9 @@ class LikesController < ApplicationController
 		@systems = @user.systems.order(created_at: :desc).page(params[:page]).per(4)
 	end
 
-
+	def show
+		@like = Like.find(params[:id])
+	end
     private
     def like_params
 	  	params.require(:like).permit(:name,:image)

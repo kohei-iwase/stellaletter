@@ -3,10 +3,10 @@ class LikesController < ApplicationController
 	def create
 		@like = Like.new(like_params)
 		if @like.save #入力されたデータをdbに保存する。
-  			redirect_to likes_path, success: "新しいルルブ/サプリを登録しました！"
+  			redirect_to likes_path, success: "新しい性癖を登録しました！"
 	    else
 	      @likes = Like.all
-	      flash[:danger] = 'ルルブ/サプリの登録に失敗しました。名前の入力欄は空白になっていませんか？'
+	      flash[:danger] = '性癖の登録に失敗しました。名前の入力欄は空白になっていませんか？'
 	      render :index
 	    end
     end
@@ -26,6 +26,5 @@ class LikesController < ApplicationController
     def like_params
 	  	params.require(:like).permit(:name,:image)
     end
-
 
 end
